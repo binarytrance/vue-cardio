@@ -1,5 +1,10 @@
 <script>
+import BaseCounter from "./components/BaseCounter.vue";
+
 export default {
+  components: {
+    BaseCounter,
+  },
   data() {
     return {
       message: "The Wire Characters!",
@@ -26,9 +31,9 @@ export default {
         },
       ],
       likedCharacters: [],
-      count: 10,
-      counterValue: 2,
-      counterTitle: "This title is less than 20",
+      // count: 10,
+      // counterValue: 2,
+      // counterTitle: "This title is less than 20",
       formValues: {
         newName: "",
         newRole: "",
@@ -38,24 +43,24 @@ export default {
     };
   },
   methods: {
-    incrementCount(cv) {
-      if (Number(cv)) {
-        this.count = this.count + Number(cv);
-      } else {
-        this.count = this.count + 1;
-      }
-    },
-    decrementCount(cv) {
-      if (this.count < Number(cv)) return; // prevent negative numbers
-      if (Number(cv)) {
-        this.count = this.count - Number(cv);
-      } else {
-        this.count--;
-      }
-    },
-    updateCounterValue(e) {
-      this.counterValue = e.target.value;
-    },
+    // incrementCount(cv) {
+    //   if (Number(cv)) {
+    //     this.count = this.count + Number(cv);
+    //   } else {
+    //     this.count = this.count + 1;
+    //   }
+    // },
+    // decrementCount(cv) {
+    //   if (this.count < Number(cv)) return; // prevent negative numbers
+    //   if (Number(cv)) {
+    //     this.count = this.count - Number(cv);
+    //   } else {
+    //     this.count--;
+    //   }
+    // },
+    // updateCounterValue(e) {
+    //   this.counterValue = e.target.value;
+    // },
     addToLikedCharacters(likedId) {
       console.log("liked characters", likedId);
       this.likedCharacters = [
@@ -106,8 +111,9 @@ export default {
   <div id="app">
     <div>{{ message }}</div>
     <!-- build an increment count -->
-    <h2>Counter</h2>
-    <h3>{{ counterTitle }}</h3>
+    <BaseCounter />
+
+    <!-- <h3>{{ counterTitle }}</h3>
     <div>
       <button v-on:click="incrementCount">+</button>&nbsp;
       <span>{{ count }}</span
@@ -124,7 +130,7 @@ export default {
         </button>
       </div>
       <h3>{{ displayCounterValueMetaData }}</h3>
-    </div>
+    </div> -->
 
     <!-- increments/decrements by 1, and by a user input counter -->
 
