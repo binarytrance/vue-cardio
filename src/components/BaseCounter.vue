@@ -7,6 +7,22 @@ export default {
       counterTitle: "This title is less than 20",
     };
   },
+  watch: {
+    count(newValue) {
+      if (newValue > 20) {
+        this.counterTitle = "This title is greater than 20";
+      }
+    },
+  },
+  computed: {
+    displayCounterValueMetaData() {
+      if (this.counterValue > 20) {
+        return "Counter Value is greater than 20";
+      } else {
+        return "Counter Value is lesser than 20";
+      }
+    },
+  },
   methods: {
     incrementCount(cv) {
       if (Number(cv)) {
