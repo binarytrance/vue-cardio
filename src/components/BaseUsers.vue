@@ -23,14 +23,5 @@ export default {
   created() {
     this.fetchUsers();
   },
-  //   computed: {
-  //     renderUsers() {
-  //       console.log(this.users);
-  //       const userList = this.users.map(
-  //         (user) => `<li id="${user.id}">${user.name}</li>`
-  //       );
-  //       return userList;
-  //     },
-  //   },
 };
 </script>

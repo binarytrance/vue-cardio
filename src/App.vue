@@ -25,11 +25,6 @@ export default {
       this.currentPage = "BaseUsers";
     },
   },
-  // computed: {
-  //   renderPage() {
-  //     return
-  //   }
-  // }
 };
 </script>
 
