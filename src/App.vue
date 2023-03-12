@@ -1,28 +1,86 @@
 <script>
 import BaseCounter from "./components/BaseCounter.vue";
-import KeyUp from "./components/KeyUp.vue";
 import TheWire from "./components/TheWire/TheWire.vue";
+import Users from "./components/Users.vue";
 
 export default {
   components: {
     BaseCounter,
-    KeyUp,
+    Users,
     TheWire,
   },
   data() {
-    return {};
+    return {
+      currentPage: "TheWire",
+    };
   },
-  methods: {},
+  methods: {
+    showTheWirePage() {
+      this.currentPage = "TheWire";
+    },
+    showCounterPage() {
+      this.currentPage = "Counter";
+    },
+  },
 };
 </script>
 
 <template>
   <div id="app">
+    <header class="header">
+      <span class="logo">
+        <img src="@/assets/vue-heart.png" width="30" />C'est La Vue
+      </span>
+      <nav class="nav">
+        <a href="#" @click.prevent="showCounterPage">Counter</a>
+        <a href="#" @click.prevent="showTheWirePage">The Wire</a>
+        <a href="#" @click.prevent="showTheWirePage">Users</a>
+      </nav>
+    </header>
     <!-- build an increment count -->
-    <BaseCounter />
-    <TheWire />
-
-    <!-- KeyUP -->
-    <KeyUp />
+    <BaseCounter v-if="currentPage === 'Counter'" />
+    <TheWire v-else-if="currentPage === 'TheWire'" />
+    <Users v-else />
   </div>
 </template>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+span.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+span.logo img {
+  margin-right: 8px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.nav a:last-child {
+  padding-right: 0;
+}
+</style>

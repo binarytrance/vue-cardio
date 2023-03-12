@@ -1,4 +1,6 @@
 <script>
+import KeyUp from "./KeyUp.vue";
+
 export default {
   data() {
     return {
@@ -43,6 +45,7 @@ export default {
       this.counterValue = e.target.value;
     },
   },
+  components: { KeyUp },
 };
 </script>
 
@@ -65,4 +68,6 @@ export default {
     </div>
     <h3>{{ displayCounterValueMetaData }}</h3>
   </div>
+
+  <KeyUp />
 </template>
