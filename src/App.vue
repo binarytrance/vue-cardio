@@ -1,12 +1,12 @@
 <script>
 import BaseCounter from "./components/BaseCounter.vue";
 import TheWire from "./components/TheWire/TheWire.vue";
-import Users from "./components/Users.vue";
+import BaseUsers from "./components/BaseUsers.vue";
 
 export default {
   components: {
     BaseCounter,
-    Users,
+    BaseUsers,
     TheWire,
   },
   data() {
@@ -19,9 +19,17 @@ export default {
       this.currentPage = "TheWire";
     },
     showCounterPage() {
-      this.currentPage = "Counter";
+      this.currentPage = "BaseCounter";
+    },
+    showUsersPage() {
+      this.currentPage = "BaseUsers";
     },
   },
+  // computed: {
+  //   renderPage() {
+  //     return
+  //   }
+  // }
 };
 </script>
 
@@ -32,15 +40,17 @@ export default {
         <img src="@/assets/vue-heart.png" width="30" />C'est La Vue
       </span>
       <nav class="nav">
-        <a href="#" @click.prevent="showCounterPage">Counter</a>
         <a href="#" @click.prevent="showTheWirePage">The Wire</a>
-        <a href="#" @click.prevent="showTheWirePage">Users</a>
+        <a href="#" @click.prevent="showCounterPage">Counter</a>
+        <a href="#" @click.prevent="showUsersPage">Users</a>
       </nav>
     </header>
     <!-- build an increment count -->
-    <BaseCounter v-if="currentPage === 'Counter'" />
+    <!-- <BaseCounter v-if="currentPage === 'BaseCounter'" />
     <TheWire v-else-if="currentPage === 'TheWire'" />
-    <Users v-else />
+    <Users v-else /> -->
+
+    <component :is="currentPage" key="currentPage" />
   </div>
 </template>
 
