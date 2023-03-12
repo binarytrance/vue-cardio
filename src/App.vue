@@ -44,7 +44,7 @@ export default {
     <!-- <BaseCounter v-if="currentPage === 'BaseCounter'" />
     <TheWire v-else-if="currentPage === 'TheWire'" />
     <Users v-else /> -->
-
+    <p>commit to branch</p>
     <component :is="currentPage" key="currentPage" />
   </div>
 </template>
