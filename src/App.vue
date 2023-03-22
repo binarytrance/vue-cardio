@@ -44,8 +44,10 @@ export default {
     <!-- <BaseCounter v-if="currentPage === 'BaseCounter'" />
     <TheWire v-else-if="currentPage === 'TheWire'" />
     <Users v-else /> -->
-    <p>commit with email change</p>
-    <component :is="currentPage" key="currentPage" />
+    <Suspense>
+      <component :is="currentPage" key="currentPage" />
+      <template v-slot:fallback>Data is loading</template>
+    </Suspense>
   </div>
 </template>
 

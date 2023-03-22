@@ -1,7 +1,15 @@
 <script>
 import KeyUp from "./KeyUp.vue";
+import { sharedCount, useCount } from "../composables/countStore.js";
 
 export default {
+  setup() {
+    const countStore = useCount();
+    return {
+      sharedCount,
+      countStore, //  have to return all this because we are using options api in conjunction with composition api. if we were using the composition api exclusively, we need not return them separately. We can use them directly after importing
+    };
+  },
   data() {
     return {
       count: 10,
@@ -29,16 +37,20 @@ export default {
     incrementCount(cv) {
       if (Number(cv)) {
         this.count = this.count + Number(cv);
+        this.sharedCount = this.sharedCount + Number(cv);
       } else {
         this.count = this.count + 1;
+        this.sharedCount = this.sharedCount + 1;
       }
     },
     decrementCount(cv) {
       if (this.count < Number(cv)) return; // prevent negative numbers
       if (Number(cv)) {
         this.count = this.count - Number(cv);
+        this.sharedCount = this.sharedCount - Number(cv);
       } else {
         this.count--;
+        this.sharedCount--;
       }
     },
     updateCounterValue(e) {
@@ -52,18 +64,30 @@ export default {
 <template>
   <h2>Counter</h2>
   <h3>{{ counterTitle }}</h3>
+  <hr />
+  <div>Shared Count: {{ sharedCount }}</div>
+  <br />
+  <p>Global Count: {{ countStore.globalCount }}</p>
+  <button @click="countStore.incrementGlobalCount">
+    Increment Global Count by 10
+  </button>
+  <p>Local Count: {{ countStore.localCount }}</p>
+  <button @click="countStore.incrementLocalCount">
+    Increment Local Count by 100
+  </button>
+  <hr />
   <div>
-    <button v-on:click="incrementCount">+</button>&nbsp; <span>{{ count }}</span
-    >&nbsp;
-    <button v-on:click="decrementCount">-</button>
+    <button v-on:click="decrementCount">-</button> &nbsp;<span>{{ count }}</span
+    >&nbsp;<button v-on:click="incrementCount">+</button>
+
     <div>
       <label>Counter value</label>
-      <button v-on:click="() => incrementCount(counterValue)">
-        Increment by {{ counterValue }}
-      </button>
-      <input type="number" v-model="counterValue" />
       <button v-on:click="() => decrementCount(counterValue)">
         Decrement by {{ counterValue }}
+      </button>
+      <input type="number" v-model="counterValue" />
+      <button v-on:click="() => incrementCount(counterValue)">
+        Increment by {{ counterValue }}
       </button>
     </div>
     <h3>{{ displayCounterValueMetaData }}</h3>

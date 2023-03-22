@@ -13,8 +13,8 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
 1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
 ## Customize configuration
@@ -44,3 +44,11 @@ npm run build
 ```sh
 npm run lint
 ```
+
+// Implement a global and local count using composables
+// implement script setup by making one component use only the composition api
+// create another shareable piece of state using composables. useState.js, useFunction.
+
+// render a list of pokemon using the pokedex api in two different components.
+// show only first five in one of the components
+// maintain the state as a composable
