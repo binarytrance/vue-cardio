@@ -1,11 +1,13 @@
 <script>
 import KeyUp from "./KeyUp.vue";
-import { sharedCount } from "../composables/countStore.js";
+import { sharedCount, useCount } from "../composables/countStore.js";
 
 export default {
   setup() {
+    const countStore = useCount();
     return {
       sharedCount,
+      countStore, //  have to return all this because we are using options api in conjunction with composition api. if we were using the composition api exclusively, we need not return them separately. We can use them directly after importing
     };
   },
   data() {
@@ -62,7 +64,18 @@ export default {
 <template>
   <h2>Counter</h2>
   <h3>{{ counterTitle }}</h3>
+  <hr />
   <div>Shared Count: {{ sharedCount }}</div>
+  <br />
+  <p>Global Count: {{ countStore.globalCount }}</p>
+  <button @click="countStore.incrementGlobalCount">
+    Increment Global Count by 10
+  </button>
+  <p>Local Count: {{ countStore.localCount }}</p>
+  <button @click="countStore.incrementLocalCount">
+    Increment Local Count by 100
+  </button>
+  <hr />
   <div>
     <button v-on:click="decrementCount">-</button> &nbsp;<span>{{ count }}</span
     >&nbsp;<button v-on:click="incrementCount">+</button>

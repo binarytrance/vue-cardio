@@ -47,4 +47,8 @@ npm run lint
 
 // Implement a global and local count using composables
 // implement script setup by making one component use only the composition api
-// create another shareable piece of state using composables. useState.js, useFunction.js
+// create another shareable piece of state using composables. useState.js, useFunction.
+
+// render a list of pokemon using the pokedex api in two different components.
+// show only first five in one of the components
+// maintain the state as a composable
