@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, defineProps, defineEmits, ref, computed } from "vue";
+import { reactive, defineProps, defineEmits, onBeforeUnmount } from "vue";
 
 // https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0
 
@@ -25,6 +25,10 @@ const fetchUsers = async () => {
 };
 state.composableUsers = await fetchUsers();
 console.log("pp", state.composableUsers);
+
+onBeforeUnmount(() => {
+  console.log("before unmount");
+});
 </script>
 
 <template>

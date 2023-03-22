@@ -1,5 +1,12 @@
 <script>
+import { sharedCount } from "../composables/countStore.js";
+
 export default {
+  setup() {
+    return {
+      sharedCount,
+    };
+  },
   data() {
     return {
       keyUppedValue: "",
@@ -15,6 +22,7 @@ export default {
 </script>
 
 <template>
+  <div>Shared Count: {{ sharedCount }}</div>
   <label>Record on Enter key</label>
   <input v-model="keyUppedValue" @keyup.enter="recordOnKeyUp" />
   <p v-if="keyUppedValue.length && showKeyUppedValue">{{ keyUppedValue }}</p>
