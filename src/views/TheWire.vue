@@ -1,7 +1,7 @@
 <script>
-import TheWireCharactersList from "./TheWireCharactersList.vue";
-import NewCharacterForm from "./NewCharacterForm.vue";
-import LikedCharacters from "./LikedCharacters.vue";
+import TheWireCharactersList from "../components/TheWire/TheWireCharactersList.vue";
+import NewCharacterForm from "../components/TheWire/NewCharacterForm.vue";
+import LikedCharacters from "../components/TheWire/LikedCharacters.vue";
 
 export default {
   components: {

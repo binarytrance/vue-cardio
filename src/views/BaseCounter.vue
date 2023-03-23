@@ -1,5 +1,5 @@
 <script>
-import KeyUp from "./KeyUp.vue";
+import KeyUp from "../components/KeyUp.vue";
 import { sharedCount, useCount } from "../composables/countStore.js";
 
 export default {

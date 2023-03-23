@@ -1,32 +1,6 @@
-<script>
-import BaseCounter from "./components/BaseCounter.vue";
-import TheWire from "./components/TheWire/TheWire.vue";
-import BaseUsers from "./components/BaseUsers.vue";
-
-export default {
-  components: {
-    BaseCounter,
-    BaseUsers,
-    TheWire,
-  },
-  data() {
-    return {
-      currentPage: "TheWire",
-    };
-  },
-  methods: {
-    showTheWirePage() {
-      this.currentPage = "TheWire";
-    },
-    showCounterPage() {
-      this.currentPage = "BaseCounter";
-    },
-    showUsersPage() {
-      this.currentPage = "BaseUsers";
-    },
-  },
-};
-</script>
+<!-- <script>
+export default {};
+</script> -->
 
 <template>
   <div id="app">
@@ -35,17 +9,19 @@ export default {
         <img src="@/assets/vue-heart.png" width="30" />C'est La Vue
       </span>
       <nav class="nav">
-        <a href="#" @click.prevent="showTheWirePage">The Wire</a>
-        <a href="#" @click.prevent="showCounterPage">Counter</a>
-        <a href="#" @click.prevent="showUsersPage">Users</a>
+        <router-link to="/">The Wire</router-link>
+        <router-link to="/counter">Counter</router-link>
+        <router-link to="/users">Users</router-link>
       </nav>
     </header>
+
     <!-- build an increment count -->
     <!-- <BaseCounter v-if="currentPage === 'BaseCounter'" />
     <TheWire v-else-if="currentPage === 'TheWire'" />
     <Users v-else /> -->
     <Suspense>
-      <component :is="currentPage" key="currentPage" />
+      <router-view />
+      <!-- <component :is="currentPage" key="currentPage" /> -->
       <template v-slot:fallback>Data is loading</template>
     </Suspense>
   </div>
