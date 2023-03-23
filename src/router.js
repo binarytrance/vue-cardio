@@ -1,6 +1,6 @@
-import BaseCounterVue from "./views/BaseCounter.vue";
-import BaseUsersVue from "./views/BaseUsers.vue";
-import TheWireVue from "./views/TheWire.vue";
+// import BaseCounterVue from "@/views/BaseCounter.vue";
+// import BaseUsersVue from "@/views/BaseUsers.vue";
+import TheWireVue from "@/views/TheWire.vue";
 
 export const routes = [
   {
@@ -9,10 +9,10 @@ export const routes = [
   },
   {
     path: "/counter",
-    component: BaseCounterVue,
+    component: () => import("@/views/BaseCounter.vue"), // lazy loading routes this way
   },
   {
     path: "/users",
-    component: BaseUsersVue,
+    component: () => import("@/views/BaseUsers.vue"),
   },
 ];
