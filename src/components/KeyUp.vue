@@ -1,9 +1,16 @@
 <script>
 import { sharedCount, useCount } from "../composables/countStore.js";
+import { watch } from "vue";
 
 export default {
   setup() {
     const countStore = useCount();
+    watch(countStore.globalCount, (newValue) => {
+      console.log(
+        { newValue },
+        "watcher watching global count only inside keyup component"
+      );
+    });
     return {
       sharedCount,
       countStore,

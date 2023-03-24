@@ -15,4 +15,8 @@ export const routes = [
     path: "/users",
     component: () => import("@/views/BaseUsers.vue"),
   },
+  {
+    path: "/game-over",
+    component: () => import("@/views/GameOver.vue"),
+  },
 ];
