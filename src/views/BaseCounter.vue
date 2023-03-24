@@ -12,6 +12,7 @@ export default {
       sharedCount,
       countStore, //  have to return all this because we are using options api in conjunction with composition api. if we were using the composition api exclusively, we need not return them separately. We can use them directly after importing
       router,
+      warningMessage,
     };
   },
   data() {
@@ -39,6 +40,14 @@ export default {
           setTimeout(() => {
             // navigate the user to GameOver
             this.router.push("/game-over");
+          }, 5000);
+        }
+        if (newValue.localCount.value > 500) {
+          this.warningMessage =
+            "You got your global count to go beyond 500. Redirecting you in 5 seconds";
+          setTimeout(() => {
+            // navigate the user to GameOver
+            this.router.push(`/game-over?from=baseCounter`);
           }, 5000);
         }
       },
