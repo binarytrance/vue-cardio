@@ -16,7 +16,7 @@ export const routes = [
     component: () => import("@/views/BaseUsers.vue"),
   },
   {
-    path: "/game-over",
+    path: "/game-over/:component?",
     component: () => import("@/views/GameOver.vue"),
   },
 ];
