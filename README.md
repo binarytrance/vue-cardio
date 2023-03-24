@@ -51,7 +51,6 @@ TODO:
 // show only first five in one of the components
 // maintain the state as a composable
 
-// Programatic navigation
-// after counter goest beyond 200, navigate the user to users page after 5 seconds (with countdown)
-// reads params
+// 5 seconds (with countdown)
+
 // nested route
