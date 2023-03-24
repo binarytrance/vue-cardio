@@ -19,9 +19,18 @@ export default {
   },
   watch: {
     count(newValue) {
+      console.log({ newValue });
       if (newValue > 20) {
         this.counterTitle = "This title is greater than 20";
       }
+    },
+    countStore: {
+      // watch is by default shallow => the callback will only trigger when the watched property has been assigned a new value
+      // watch doesn't trigger in nested property changes => the following is a deep watcher
+      handler(newValue) {
+        console.log(newValue.localCount.value, "watch countstore");
+      },
+      deep: true,
     },
   },
   computed: {
